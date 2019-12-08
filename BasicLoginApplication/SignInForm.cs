@@ -37,11 +37,15 @@ namespace BasicLoginApplication {
         }
 
         private void buttonClose1_MouseDown(object sender, MouseEventArgs e) {
+            if (signInPanel.rememberMe()) {
+
+            }
+
             Application.Exit();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e) {
-            signInPanel1.showInvalid();
+            signInPanel.showInvalid();
         }
     }
 }

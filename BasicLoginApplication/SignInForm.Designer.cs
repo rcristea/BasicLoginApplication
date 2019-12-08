@@ -27,7 +27,7 @@
             this.buttonClose = new BasicLoginApplication.Custom_Controls.ButtonClose();
             this.backgroundPanel = new BasicLoginApplication.Custom_Controls.BackgroundPanel();
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.signInPanel1 = new BasicLoginApplication.Custom_Controls.SignInPanel();
+            this.signInPanel = new BasicLoginApplication.Custom_Controls.SignInPanel();
             this.gradient.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -36,7 +36,7 @@
             this.gradient.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
             this.gradient.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(137)))), ((int)(((byte)(162)))));
             this.gradient.Controls.Add(this.buttonLogin);
-            this.gradient.Controls.Add(this.signInPanel1);
+            this.gradient.Controls.Add(this.signInPanel);
             this.gradient.Controls.Add(this.buttonClose);
             this.gradient.Controls.Add(this.backgroundPanel);
             this.gradient.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -81,14 +81,14 @@
             this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
-            // signInPanel1
+            // signInPanel
             // 
-            this.signInPanel1.BackColor = System.Drawing.Color.White;
-            this.signInPanel1.Location = new System.Drawing.Point(58, 110);
-            this.signInPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.signInPanel1.Name = "signInPanel1";
-            this.signInPanel1.Size = new System.Drawing.Size(364, 227);
-            this.signInPanel1.TabIndex = 2;
+            this.signInPanel.BackColor = System.Drawing.Color.White;
+            this.signInPanel.Location = new System.Drawing.Point(58, 110);
+            this.signInPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.signInPanel.Name = "signInPanel";
+            this.signInPanel.Size = new System.Drawing.Size(364, 227);
+            this.signInPanel.TabIndex = 2;
             // 
             // SignInForm
             // 
@@ -110,7 +110,7 @@
         private Custom_Controls.BackgroundPanel backgroundPanel;
         private Custom_Controls.ButtonClose buttonClose;
         private System.Windows.Forms.Button buttonLogin;
-        private Custom_Controls.SignInPanel signInPanel1;
+        private Custom_Controls.SignInPanel signInPanel;
     }
 }
 
