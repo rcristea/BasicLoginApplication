@@ -26,8 +26,8 @@
             this.gradient = new BasicLoginApplication.res.Gradient();
             this.buttonClose = new BasicLoginApplication.Custom_Controls.ButtonClose();
             this.backgroundPanel = new BasicLoginApplication.Custom_Controls.BackgroundPanel();
-            this.signInPanel1 = new BasicLoginApplication.Custom_Controls.SignInPanel();
             this.buttonLogin = new System.Windows.Forms.Button();
+            this.signInPanel1 = new BasicLoginApplication.Custom_Controls.SignInPanel();
             this.gradient.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,10 +61,25 @@
             // backgroundPanel
             // 
             this.backgroundPanel.BackColor = System.Drawing.Color.White;
-            this.backgroundPanel.Location = new System.Drawing.Point(47, 65);
+            this.backgroundPanel.Location = new System.Drawing.Point(47, 52);
             this.backgroundPanel.Name = "backgroundPanel";
             this.backgroundPanel.Size = new System.Drawing.Size(376, 472);
             this.backgroundPanel.TabIndex = 0;
+            // 
+            // buttonLogin
+            // 
+            this.buttonLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
+            this.buttonLogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.buttonLogin.ForeColor = System.Drawing.Color.White;
+            this.buttonLogin.Location = new System.Drawing.Point(140, 326);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(188, 38);
+            this.buttonLogin.TabIndex = 3;
+            this.buttonLogin.Text = "LOGIN";
+            this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // signInPanel1
             // 
@@ -74,20 +89,6 @@
             this.signInPanel1.Name = "signInPanel1";
             this.signInPanel1.Size = new System.Drawing.Size(364, 227);
             this.signInPanel1.TabIndex = 2;
-            // 
-            // buttonLogin
-            // 
-            this.buttonLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
-            this.buttonLogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.buttonLogin.ForeColor = System.Drawing.Color.White;
-            this.buttonLogin.Location = new System.Drawing.Point(148, 325);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(188, 38);
-            this.buttonLogin.TabIndex = 3;
-            this.buttonLogin.Text = "LOGIN";
-            this.buttonLogin.UseVisualStyleBackColor = false;
             // 
             // SignInForm
             // 
@@ -108,8 +109,8 @@
         private res.Gradient gradient;
         private Custom_Controls.BackgroundPanel backgroundPanel;
         private Custom_Controls.ButtonClose buttonClose;
-        private Custom_Controls.SignInPanel signInPanel1;
         private System.Windows.Forms.Button buttonLogin;
+        private Custom_Controls.SignInPanel signInPanel1;
     }
 }
 

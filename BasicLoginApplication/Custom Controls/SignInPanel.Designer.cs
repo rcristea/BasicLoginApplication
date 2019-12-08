@@ -36,7 +36,7 @@
             this.labelSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelSignIn.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSignIn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelSignIn.Location = new System.Drawing.Point(100, 30);
+            this.labelSignIn.Location = new System.Drawing.Point(100, 23);
             this.labelSignIn.Margin = new System.Windows.Forms.Padding(100, 30, 100, 0);
             this.labelSignIn.Name = "labelSignIn";
             this.labelSignIn.Size = new System.Drawing.Size(164, 51);
@@ -53,6 +53,7 @@
             this.textBoxCueUsername.Name = "textBoxCueUsername";
             this.textBoxCueUsername.Size = new System.Drawing.Size(182, 31);
             this.textBoxCueUsername.TabIndex = 1;
+            this.textBoxCueUsername.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBoxCueUsername_MouseDown);
             // 
             // textBoxCuePassword
             // 
@@ -64,6 +65,7 @@
             this.textBoxCuePassword.PasswordChar = '●';
             this.textBoxCuePassword.Size = new System.Drawing.Size(182, 31);
             this.textBoxCuePassword.TabIndex = 2;
+            this.textBoxCuePassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBoxCuePassword_MouseDown);
             // 
             // checkBoxRememberMe
             // 

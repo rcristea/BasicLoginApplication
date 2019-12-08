@@ -16,7 +16,7 @@ namespace BasicLoginApplication {
 
         public SignInForm() {
             InitializeComponent();
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 50, 50));
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         private void gradient_MouseDown(object sender, MouseEventArgs e) {
@@ -38,6 +38,10 @@ namespace BasicLoginApplication {
 
         private void buttonClose1_MouseDown(object sender, MouseEventArgs e) {
             Application.Exit();
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e) {
+            signInPanel1.showInvalid();
         }
     }
 }

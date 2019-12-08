@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace BasicLoginApplication.Custom_Controls {
     public partial class SignInPanel : UserControl {
@@ -32,6 +24,14 @@ namespace BasicLoginApplication.Custom_Controls {
         }
 
         public void hideInvalide() {
+            labelInvalid.Hide();
+        }
+
+        private void textBoxCueUsername_MouseDown(object sender, MouseEventArgs e) {
+            labelInvalid.Hide();
+        }
+
+        private void textBoxCuePassword_MouseDown(object sender, MouseEventArgs e) {
             labelInvalid.Hide();
         }
     }
