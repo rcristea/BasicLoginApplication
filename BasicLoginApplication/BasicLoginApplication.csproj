@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom Controls\BackgroundPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\BackgroundPanel.Designer.cs">
+      <DependentUpon>BackgroundPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Custom Controls\ButtonClose.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Custom Controls\ButtonClose.Designer.cs">
       <DependentUpon>ButtonClose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\SignInPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\SignInPanel.Designer.cs">
+      <DependentUpon>SignInPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Custom Controls\TextBoxCue.cs">
       <SubType>Component</SubType>
@@ -69,8 +81,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Custom Controls\BackgroundPanel.resx">
+      <DependentUpon>BackgroundPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\ButtonClose.resx">
       <DependentUpon>ButtonClose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Controls\SignInPanel.resx">
+      <DependentUpon>SignInPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

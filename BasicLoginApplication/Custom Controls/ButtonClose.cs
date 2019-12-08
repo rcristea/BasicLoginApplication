@@ -13,7 +13,7 @@ namespace BasicLoginApplication.Custom_Controls {
         public ButtonClose() {
             InitializeComponent();
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this.BackColor = Color.Transparent;
+            this.BackColor = Color.White;
         }
 
         private void ButtonClose_Paint(object sender, PaintEventArgs e) {

@@ -35,5 +35,9 @@ namespace BasicLoginApplication {
         private void gradient_MouseUp(object sender, MouseEventArgs e) {
             this.dragging = false;
         }
+
+        private void buttonClose1_MouseDown(object sender, MouseEventArgs e) {
+            Application.Exit();
+        }
     }
 }
