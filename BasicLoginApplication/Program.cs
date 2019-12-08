@@ -11,9 +11,13 @@ namespace BasicLoginApplication {
         /// </summary>
         [STAThread]
         static void Main() {
+            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new SignInForm());
+            */
+            User u = new User("email@example.com", "username", "p4ssw0rd");
+            Console.WriteLine(u.getPassword());
         }
     }
 }
