@@ -1,40 +1,48 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BasicLoginApplication {
     class User {
         private string email;
+        public string Email {
+            get { return this.email; }
+            set { this.email = value; }
+        }
         private string username;
+        public string Username {
+            get { return this.username; }
+            set { this.username = value; }
+        }
         private string password;
+        public string Password {
+            get { return this.password;  }
+            set { this.password = setPassword(value);  }
+        }
+
         private static RSACryptoServiceProvider RSA = new RSACryptoServiceProvider();
 
         public User(string email, string username, string password) {
-            this.email = email;
-            this.username = username;
-            setPassword(password);
+            this.Email = email;
+            this.Username = username;
+            this.Password = password;
         }
 
         public string getPassword() {
-            return this.password;
+            return this.Password;
         }
 
-        private void setPassword(string password) {
+        private string setPassword(string password) {
+            UnicodeEncoding byteConverter = new UnicodeEncoding();
+            byte[] encryptedPassword = null;
             try {
-                UnicodeEncoding byteConverter = new UnicodeEncoding();
                 byte[] passwordBytes = byteConverter.GetBytes(password);
-                byte[] encryptedPassword;
-
                 encryptedPassword = encrypt(passwordBytes, RSA.ExportParameters(false), false);
-
-                this.password = byteConverter.GetString(encryptedPassword);
             } catch (ArgumentNullException) {
                 Console.WriteLine("Encrpython failed.");
             }
+
+            return byteConverter.GetString(encryptedPassword);
         }
 
 
@@ -46,7 +54,6 @@ namespace BasicLoginApplication {
                 return encryptedData;
             } catch (CryptographicException e) {
                 Console.WriteLine(e.Message);
-
                 return null;
             }
         }

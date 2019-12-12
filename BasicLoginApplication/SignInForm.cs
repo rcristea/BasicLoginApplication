@@ -68,7 +68,6 @@ namespace BasicLoginApplication {
             }
 
             if (!invalid) {
-                //TODO search database for the user/pass and let them log in
                 MessageBox.Show("Input validation successful");
             }
         }
