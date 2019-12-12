@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using System.Text.RegularExpressions;
 
 namespace BasicLoginApplication {
     public partial class SignInForm : Form {
@@ -45,7 +45,32 @@ namespace BasicLoginApplication {
         }
 
         private void buttonLogin_Click(object sender, EventArgs e) {
-            signInPanel.showInvalid();
+            //TODO validate username and password with database
+            string username = signInPanel.getUsername();
+            string password = signInPanel.getPassword();
+
+            bool invalid = false;
+            
+            var regexUsername = new Regex("^[a-zA-Z0-9]+$");
+            if (!regexUsername.IsMatch(username)) {
+                signInPanel.showUsernameInvalid(true);
+                invalid = true;
+            }
+
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasMinimum8Chars = new Regex(@".{8,}");
+
+            if (!hasNumber.IsMatch(password) || !hasUpperChar.IsMatch(password)
+                || !hasMinimum8Chars.IsMatch(password)) {
+                signInPanel.showPasswordInvalid(true);
+                invalid = true;
+            }
+
+            if (!invalid) {
+                //TODO search database for the user/pass and let them log in
+                MessageBox.Show("Input validation successful");
+            }
         }
     }
 }
