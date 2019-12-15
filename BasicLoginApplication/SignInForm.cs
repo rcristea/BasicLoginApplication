@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace BasicLoginApplication {
     public partial class SignInForm : Form {
+        private DatabaseManager dm = new DatabaseManager();
         private bool dragging = false;
         private Point point;
         private Point dragStart;
@@ -38,14 +39,13 @@ namespace BasicLoginApplication {
 
         private void buttonClose1_MouseDown(object sender, MouseEventArgs e) {
             if (signInPanel.rememberMe()) {
-
+                //TODO if they checked remember me i need to create a text file with the username and password (encrypted) in a text file
             }
 
             Application.Exit();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e) {
-            //TODO validate username and password with database
             string username = signInPanel.getUsername();
             string password = signInPanel.getPassword();
 
@@ -61,15 +61,18 @@ namespace BasicLoginApplication {
             var hasUpperChar = new Regex(@"[A-Z]+");
             var hasMinimum8Chars = new Regex(@".{8,}");
 
-            if (!hasNumber.IsMatch(password) || !hasUpperChar.IsMatch(password)
-                || !hasMinimum8Chars.IsMatch(password)) {
+            if (!hasNumber.IsMatch(password) || !hasUpperChar.IsMatch(password) || !hasMinimum8Chars.IsMatch(password)) {
                 signInPanel.showPasswordInvalid(true);
                 invalid = true;
             }
 
             if (!invalid) {
-                //TODO search database for the user/pass and let them log in
-                MessageBox.Show("Input validation successful");
+                if (dm.isValidUser(username, password)) {
+                    MessageBox.Show("Signed In!");
+                }
+                else {
+                    MessageBox.Show("Invalid username or password");
+                }
             }
         }
     }
