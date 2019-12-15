@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicLoginApplication {
@@ -11,15 +8,16 @@ namespace BasicLoginApplication {
         /// </summary>
         [STAThread]
         static void Main() {
-            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SignInForm());
-            */
-
+            
+            /*
             DatabaseManager dm = new DatabaseManager();
-            User u = new User("email@example.com", "username", "P4ssM0rd");
+            User u = new User("admin@basiclogin.com", "admin", "Password321");
+            u.encryptPassword();
             dm.addDocument(u);
+            */
         }
     }
 }

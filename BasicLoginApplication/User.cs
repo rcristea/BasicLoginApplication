@@ -1,8 +1,11 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace BasicLoginApplication {
+    [BsonIgnoreExtraElements]
     class User {
         private string email;
         public string Email {
@@ -17,45 +20,57 @@ namespace BasicLoginApplication {
         private string password;
         public string Password {
             get { return this.password;  }
-            set { this.password = setPassword(value);  }
+            set { this.password = value;  }
         }
 
-        private static RSACryptoServiceProvider RSA = new RSACryptoServiceProvider();
+        private static string key = "AH!PS^B0%FGH$we4";
 
         public User(string email, string username, string password) {
-            this.Email = email;
-            this.Username = username;
-            this.Password = password;
+            Email = email;
+            Username = username;
+            Password = password;
         }
 
-        public string getPassword() {
-            return this.Password;
+        public static string encryptPassword(string password) {
+            return Cipher.Encrypt(password, User.key);
         }
 
-        private string setPassword(string password) {
-            UnicodeEncoding byteConverter = new UnicodeEncoding();
-            byte[] encryptedPassword = null;
-            try {
-                byte[] passwordBytes = byteConverter.GetBytes(password);
-                encryptedPassword = encrypt(passwordBytes, RSA.ExportParameters(false), false);
-            } catch (ArgumentNullException) {
-                Console.WriteLine("Encrpython failed.");
-            }
-
-            return byteConverter.GetString(encryptedPassword);
+        public void encryptPassword() {
+            Password = Cipher.Encrypt(Password, key);
         }
 
+        public override string ToString() {
+            return "Email: " + Email + " Username: " + Username + " Password: " + Password;
+        }
+    }
 
-        private byte[] encrypt(byte[] data, RSAParameters key, bool doAEPPadding) {
-            try {
-                byte[] encryptedData;
-                RSA.ImportParameters(key);
-                encryptedData = RSA.Encrypt(data, doAEPPadding);
-                return encryptedData;
-            } catch (CryptographicException e) {
-                Console.WriteLine(e.Message);
-                return null;
-            }
+    static class Cipher {
+        private const string vector = "2Hyjp$khk9a$b31s";
+        private const int keySize = 256;
+        private static UnicodeEncoding ByteConverter = new UnicodeEncoding();
+
+        public static string Encrypt(string password, string key) {
+            byte[] vectorBytes = ByteConverter.GetBytes(vector);
+            byte[] passwordBytes = ByteConverter.GetBytes(password);
+
+            PasswordDeriveBytes passwordDeriveBytes = new PasswordDeriveBytes(key, null);
+            byte[] keyBytes = passwordDeriveBytes.GetBytes(keySize / 8);
+
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+            symmetricKey.Mode = CipherMode.CBC;
+            symmetricKey.BlockSize = 256;
+            symmetricKey.Padding = PaddingMode.Zeros;
+            ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, vectorBytes);
+            MemoryStream memoryStream = new MemoryStream();
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
+            cryptoStream.Write(passwordBytes, 0, passwordBytes.Length);
+            cryptoStream.FlushFinalBlock();
+
+            byte[] cipherTextBytes = memoryStream.ToArray();
+            memoryStream.Close();
+            cryptoStream.Close();
+
+            return Convert.ToBase64String(cipherTextBytes);
         }
     }
 }

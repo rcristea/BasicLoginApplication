@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using System;
+using MongoDB.Driver;
+using System.Collections.Generic;
 
 namespace BasicLoginApplication {
     class DatabaseManager {
@@ -8,17 +10,33 @@ namespace BasicLoginApplication {
         private IMongoCollection<User> Collection;
 
         public DatabaseManager () {
-            this.Client = new MongoClient(ConnectionString);
-            this.Database = Client.GetDatabase("BasicLoginApplicationUsers");
-            this.Collection = Database.GetCollection<User>("users");
+            Client = new MongoClient(ConnectionString);
+            Database = Client.GetDatabase("BasicLoginApplicationUsers");
+            Collection = Database.GetCollection<User>("users");
         }
 
-        public void addDocument(User user) {
-            this.Collection.InsertOne(user);
+        public async void addDocument(User user) {
+            await Collection.InsertOneAsync(user);
         }
 
-        public void removeDocument(User user) {
-            this.Collection.DeleteOne(user.Email);
+        public async void removeDocument(User user) {
+            await Collection.DeleteOneAsync(user.Email);
+        }
+
+        private User getDocument(string query) {
+            FilterDefinition<User> filter = Builders<User>.Filter.Eq("Username", query);
+            return Collection.Find(filter).FirstOrDefault();
+        }
+
+        public bool isValidUser(string username, string password) {
+            User user = getDocument(username) == null ? new User("", "", "") : getDocument(username);
+
+            string encryptedPassword = User.encryptPassword(password);
+            if (user.Password == encryptedPassword) {
+                return true;
+            }
+
+            return false;
         }
     }
 }
