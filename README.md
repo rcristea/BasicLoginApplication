@@ -17,5 +17,4 @@ Incomplete Features
 
 Bugs
 ---
-- The signin page should not have validation for the username and password. This should be reserved for the signup page and will be rectified in future commits.
 - The white background is too high.
