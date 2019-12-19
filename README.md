@@ -8,12 +8,12 @@ Completed Features
 - User input validation
 - Password encryption
 - Database connection
+- Login verification
 
 Incomplete Features
 -------------------
 - Login with Facebook or Google
 - Sign up page
-- Login verification
 
 Bugs
 ---
