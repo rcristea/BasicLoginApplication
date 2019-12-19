@@ -49,30 +49,10 @@ namespace BasicLoginApplication {
             string username = signInPanel.getUsername();
             string password = signInPanel.getPassword();
 
-            bool invalid = false;
-            
-            var regexUsername = new Regex("^[a-zA-Z0-9]+$");
-            if (!regexUsername.IsMatch(username)) {
-                signInPanel.showUsernameInvalid(true);
-                invalid = true;
-            }
-
-            var hasNumber = new Regex(@"[0-9]+");
-            var hasUpperChar = new Regex(@"[A-Z]+");
-            var hasMinimum8Chars = new Regex(@".{8,}");
-
-            if (!hasNumber.IsMatch(password) || !hasUpperChar.IsMatch(password) || !hasMinimum8Chars.IsMatch(password)) {
-                signInPanel.showPasswordInvalid(true);
-                invalid = true;
-            }
-
-            if (!invalid) {
-                if (dm.isValidUser(username, password)) {
-                    MessageBox.Show("Signed In!");
-                }
-                else {
-                    MessageBox.Show("Invalid username or password");
-                }
+            if (dm.isValidUser(username, password)) {
+                MessageBox.Show("Signed In!");
+            } else {
+                signInPanel.showInvalid(true);
             }
         }
     }

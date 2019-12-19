@@ -5,8 +5,6 @@ namespace BasicLoginApplication.Custom_Controls {
         public SignInPanel() {
             InitializeComponent();
             labelInvalid.Hide();
-            labelUsernameInvalid.Hide();
-            labelPasswordInvalid.Hide();
         }
 
         public string getUsername() {
@@ -21,38 +19,21 @@ namespace BasicLoginApplication.Custom_Controls {
             return checkBoxRememberMe.Checked;
         }
 
-        public void showInvalid(bool show) {
-            if (show) {
+        public void showInvalid(bool isInvalid) {
+            if (isInvalid) {
                 labelInvalid.Show();
-            } else {
+            }
+            else {
                 labelInvalid.Hide();
-            }
-        }
-
-        public void showUsernameInvalid(bool show) {
-            if (show) {
-                labelUsernameInvalid.Show();
-            } else {
-                labelUsernameInvalid.Hide();
-            }
-        }
-
-        public void showPasswordInvalid(bool show) {
-            if (show) {
-                labelPasswordInvalid.Show();
-            } else {
-                labelPasswordInvalid.Hide();
             }
         }
 
         private void textBoxCueUsername_MouseDown(object sender, MouseEventArgs e) {
             labelInvalid.Hide();
-            labelUsernameInvalid.Hide();
         }
 
         private void textBoxCuePassword_MouseDown(object sender, MouseEventArgs e) {
             labelInvalid.Hide();
-            labelPasswordInvalid.Hide();
         }
     }
 }
