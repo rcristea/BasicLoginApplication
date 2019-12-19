@@ -16,6 +16,7 @@ namespace BasicLoginApplication {
         }
 
         public async void addDocument(User user) {
+            user.Username = user.Username.ToLower();
             await Collection.InsertOneAsync(user);
         }
 
@@ -29,6 +30,7 @@ namespace BasicLoginApplication {
         }
 
         public bool isValidUser(string username, string password) {
+            username = username.ToLower();
             User user = getDocument(username) == null ? new User("", "", "") : getDocument(username);
 
             string encryptedPassword = User.encryptPassword(password);
