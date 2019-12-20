@@ -66,17 +66,17 @@ namespace BasicLoginApplication.Custom_Controls {
             }
         }
 
-        private void showInvalidEmail(bool invalid) {
+        public void showInvalidEmail(bool invalid) {
             if (invalid) labelInvalidEmail.Show();
             else labelInvalidEmail.Hide();
         }
 
-        private void showUsernameTaken(bool invalid) {
+        public void showUsernameTaken(bool invalid) {
             if (invalid) labelUsernameTaken.Show();
             else labelUsernameTaken.Hide();
         }
 
-        private void showInvalidPassword(bool invalid) {
+        public void showInvalidPassword(bool invalid) {
             if (invalid) labelInvalidPassword.Show();
             else labelInvalidPassword.Hide();
         }

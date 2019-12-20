@@ -24,10 +24,15 @@
         /// </summary>
         private void InitializeComponent() {
             this.gradient = new BasicLoginApplication.res.Gradient();
-            this.buttonClose = new BasicLoginApplication.Custom_Controls.ButtonClose();
-            this.backgroundPanel = new BasicLoginApplication.Custom_Controls.BackgroundPanel();
+            this.labelBackButton = new System.Windows.Forms.Label();
+            this.buttonSignup = new System.Windows.Forms.Button();
+            this.signUpPanel = new BasicLoginApplication.Custom_Controls.SignUpPanel();
+            this.labelSignUpButton = new System.Windows.Forms.Label();
+            this.labelNotAMemeber = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.signInPanel = new BasicLoginApplication.Custom_Controls.SignInPanel();
+            this.buttonClose = new BasicLoginApplication.Custom_Controls.ButtonClose();
+            this.backgroundPanel = new BasicLoginApplication.Custom_Controls.BackgroundPanel();
             this.gradient.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -35,6 +40,11 @@
             // 
             this.gradient.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
             this.gradient.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(137)))), ((int)(((byte)(162)))));
+            this.gradient.Controls.Add(this.labelBackButton);
+            this.gradient.Controls.Add(this.buttonSignup);
+            this.gradient.Controls.Add(this.signUpPanel);
+            this.gradient.Controls.Add(this.labelSignUpButton);
+            this.gradient.Controls.Add(this.labelNotAMemeber);
             this.gradient.Controls.Add(this.buttonLogin);
             this.gradient.Controls.Add(this.signInPanel);
             this.gradient.Controls.Add(this.buttonClose);
@@ -48,23 +58,69 @@
             this.gradient.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseMove);
             this.gradient.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseUp);
             // 
-            // buttonClose
+            // labelBackButton
             // 
-            this.buttonClose.BackColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(381, 82);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(3, 10, 10, 3);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(25, 25);
-            this.buttonClose.TabIndex = 1;
-            this.buttonClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonClose1_MouseDown);
+            this.labelBackButton.AutoSize = true;
+            this.labelBackButton.BackColor = System.Drawing.Color.White;
+            this.labelBackButton.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBackButton.ForeColor = System.Drawing.Color.Gray;
+            this.labelBackButton.Location = new System.Drawing.Point(210, 492);
+            this.labelBackButton.Name = "labelBackButton";
+            this.labelBackButton.Size = new System.Drawing.Size(30, 13);
+            this.labelBackButton.TabIndex = 8;
+            this.labelBackButton.Text = "Back";
+            this.labelBackButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelBackButton_MouseDown);
+            this.labelBackButton.MouseLeave += new System.EventHandler(this.labelBackButton_MouseLeave);
+            this.labelBackButton.MouseHover += new System.EventHandler(this.labelBackButton_MouseHover);
             // 
-            // backgroundPanel
+            // buttonSignup
             // 
-            this.backgroundPanel.BackColor = System.Drawing.Color.White;
-            this.backgroundPanel.Location = new System.Drawing.Point(47, 52);
-            this.backgroundPanel.Name = "backgroundPanel";
-            this.backgroundPanel.Size = new System.Drawing.Size(376, 472);
-            this.backgroundPanel.TabIndex = 0;
+            this.buttonSignup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
+            this.buttonSignup.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonSignup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSignup.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.buttonSignup.ForeColor = System.Drawing.Color.White;
+            this.buttonSignup.Location = new System.Drawing.Point(140, 391);
+            this.buttonSignup.Name = "buttonSignup";
+            this.buttonSignup.Size = new System.Drawing.Size(188, 38);
+            this.buttonSignup.TabIndex = 7;
+            this.buttonSignup.Text = "SIGN UP";
+            this.buttonSignup.UseVisualStyleBackColor = false;
+            // 
+            // signUpPanel
+            // 
+            this.signUpPanel.BackColor = System.Drawing.Color.White;
+            this.signUpPanel.Location = new System.Drawing.Point(58, 113);
+            this.signUpPanel.Name = "signUpPanel";
+            this.signUpPanel.Size = new System.Drawing.Size(364, 285);
+            this.signUpPanel.TabIndex = 6;
+            // 
+            // labelSignUpButton
+            // 
+            this.labelSignUpButton.AutoSize = true;
+            this.labelSignUpButton.BackColor = System.Drawing.Color.White;
+            this.labelSignUpButton.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSignUpButton.ForeColor = System.Drawing.Color.Gray;
+            this.labelSignUpButton.Location = new System.Drawing.Point(246, 492);
+            this.labelSignUpButton.Name = "labelSignUpButton";
+            this.labelSignUpButton.Size = new System.Drawing.Size(48, 13);
+            this.labelSignUpButton.TabIndex = 5;
+            this.labelSignUpButton.Text = "Sign Up";
+            this.labelSignUpButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelSignUpButton_MouseDown);
+            this.labelSignUpButton.MouseLeave += new System.EventHandler(this.labelSignUpButton_MouseLeave);
+            this.labelSignUpButton.MouseHover += new System.EventHandler(this.labelSignUpButton_MouseHover);
+            // 
+            // labelNotAMemeber
+            // 
+            this.labelNotAMemeber.AutoSize = true;
+            this.labelNotAMemeber.BackColor = System.Drawing.Color.White;
+            this.labelNotAMemeber.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNotAMemeber.ForeColor = System.Drawing.Color.Gray;
+            this.labelNotAMemeber.Location = new System.Drawing.Point(156, 492);
+            this.labelNotAMemeber.Name = "labelNotAMemeber";
+            this.labelNotAMemeber.Size = new System.Drawing.Size(84, 13);
+            this.labelNotAMemeber.TabIndex = 4;
+            this.labelNotAMemeber.Text = "Not a member?";
             // 
             // buttonLogin
             // 
@@ -83,12 +139,31 @@
             // 
             // signInPanel
             // 
+            this.signInPanel.AccessibleDescription = "7";
             this.signInPanel.BackColor = System.Drawing.Color.White;
             this.signInPanel.Location = new System.Drawing.Point(58, 110);
             this.signInPanel.Margin = new System.Windows.Forms.Padding(0);
             this.signInPanel.Name = "signInPanel";
             this.signInPanel.Size = new System.Drawing.Size(364, 227);
             this.signInPanel.TabIndex = 2;
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.BackColor = System.Drawing.Color.White;
+            this.buttonClose.Location = new System.Drawing.Point(381, 82);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(3, 10, 10, 3);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(25, 25);
+            this.buttonClose.TabIndex = 1;
+            this.buttonClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonClose1_MouseDown);
+            // 
+            // backgroundPanel
+            // 
+            this.backgroundPanel.BackColor = System.Drawing.Color.White;
+            this.backgroundPanel.Location = new System.Drawing.Point(47, 58);
+            this.backgroundPanel.Name = "backgroundPanel";
+            this.backgroundPanel.Size = new System.Drawing.Size(376, 472);
+            this.backgroundPanel.TabIndex = 0;
             // 
             // SignInForm
             // 
@@ -100,6 +175,7 @@
             this.Name = "SignInForm";
             this.Text = "Sign In";
             this.gradient.ResumeLayout(false);
+            this.gradient.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -111,6 +187,11 @@
         private Custom_Controls.ButtonClose buttonClose;
         private System.Windows.Forms.Button buttonLogin;
         private Custom_Controls.SignInPanel signInPanel;
+        private System.Windows.Forms.Label labelSignUpButton;
+        private System.Windows.Forms.Label labelNotAMemeber;
+        private System.Windows.Forms.Button buttonSignup;
+        private Custom_Controls.SignUpPanel signUpPanel;
+        private System.Windows.Forms.Label labelBackButton;
     }
 }
 

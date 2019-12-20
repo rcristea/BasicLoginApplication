@@ -26,13 +26,13 @@
             this.labelSignUp = new System.Windows.Forms.Label();
             this.labelInvalidEmail = new System.Windows.Forms.Label();
             this.checkBoxShowPassword = new System.Windows.Forms.CheckBox();
+            this.labelUsernameTaken = new System.Windows.Forms.Label();
+            this.labelInvalidPassword = new System.Windows.Forms.Label();
+            this.labelPasswordDoesNotMatch = new System.Windows.Forms.Label();
             this.textBoxCuePassword2 = new BasicLoginApplication.Custom_Controls.TextBoxCue();
             this.textBoxCuePassword1 = new BasicLoginApplication.Custom_Controls.TextBoxCue();
             this.textBoxCueUsername = new BasicLoginApplication.Custom_Controls.TextBoxCue();
             this.textBoxCueEmail = new BasicLoginApplication.Custom_Controls.TextBoxCue();
-            this.labelUsernameTaken = new System.Windows.Forms.Label();
-            this.labelInvalidPassword = new System.Windows.Forms.Label();
-            this.labelPasswordDoesNotMatch = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelSignUp
@@ -77,6 +77,45 @@
             this.checkBoxShowPassword.Text = "Show";
             this.checkBoxShowPassword.UseVisualStyleBackColor = true;
             this.checkBoxShowPassword.CheckedChanged += new System.EventHandler(this.checkBoxShowPassword_CheckedChanged);
+            // 
+            // labelUsernameTaken
+            // 
+            this.labelUsernameTaken.AutoSize = true;
+            this.labelUsernameTaken.BackColor = System.Drawing.Color.Transparent;
+            this.labelUsernameTaken.Font = new System.Drawing.Font("Segoe UI", 6.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsernameTaken.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelUsernameTaken.Location = new System.Drawing.Point(88, 111);
+            this.labelUsernameTaken.Margin = new System.Windows.Forms.Padding(0);
+            this.labelUsernameTaken.Name = "labelUsernameTaken";
+            this.labelUsernameTaken.Size = new System.Drawing.Size(71, 12);
+            this.labelUsernameTaken.TabIndex = 10;
+            this.labelUsernameTaken.Text = "Username Taken";
+            // 
+            // labelInvalidPassword
+            // 
+            this.labelInvalidPassword.AutoSize = true;
+            this.labelInvalidPassword.BackColor = System.Drawing.Color.Transparent;
+            this.labelInvalidPassword.Font = new System.Drawing.Font("Segoe UI", 5.55F);
+            this.labelInvalidPassword.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelInvalidPassword.Location = new System.Drawing.Point(88, 157);
+            this.labelInvalidPassword.Margin = new System.Windows.Forms.Padding(0);
+            this.labelInvalidPassword.Name = "labelInvalidPassword";
+            this.labelInvalidPassword.Size = new System.Drawing.Size(223, 11);
+            this.labelInvalidPassword.TabIndex = 11;
+            this.labelInvalidPassword.Text = "Must have upper and lower case, a number, and 8 characters";
+            // 
+            // labelPasswordDoesNotMatch
+            // 
+            this.labelPasswordDoesNotMatch.AutoSize = true;
+            this.labelPasswordDoesNotMatch.BackColor = System.Drawing.Color.Transparent;
+            this.labelPasswordDoesNotMatch.Font = new System.Drawing.Font("Segoe UI", 6.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPasswordDoesNotMatch.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelPasswordDoesNotMatch.Location = new System.Drawing.Point(88, 203);
+            this.labelPasswordDoesNotMatch.Margin = new System.Windows.Forms.Padding(0);
+            this.labelPasswordDoesNotMatch.Name = "labelPasswordDoesNotMatch";
+            this.labelPasswordDoesNotMatch.Size = new System.Drawing.Size(101, 12);
+            this.labelPasswordDoesNotMatch.TabIndex = 12;
+            this.labelPasswordDoesNotMatch.Text = "Passwords do not match";
             // 
             // textBoxCuePassword2
             // 
@@ -124,49 +163,11 @@
             this.textBoxCueEmail.TabIndex = 2;
             this.textBoxCueEmail.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBoxCueEmail_MouseDown);
             // 
-            // labelUsernameTaken
-            // 
-            this.labelUsernameTaken.AutoSize = true;
-            this.labelUsernameTaken.BackColor = System.Drawing.Color.Transparent;
-            this.labelUsernameTaken.Font = new System.Drawing.Font("Segoe UI", 6.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsernameTaken.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelUsernameTaken.Location = new System.Drawing.Point(88, 111);
-            this.labelUsernameTaken.Margin = new System.Windows.Forms.Padding(0);
-            this.labelUsernameTaken.Name = "labelUsernameTaken";
-            this.labelUsernameTaken.Size = new System.Drawing.Size(71, 12);
-            this.labelUsernameTaken.TabIndex = 10;
-            this.labelUsernameTaken.Text = "Username Taken";
-            // 
-            // labelInvalidPassword
-            // 
-            this.labelInvalidPassword.AutoSize = true;
-            this.labelInvalidPassword.BackColor = System.Drawing.Color.Transparent;
-            this.labelInvalidPassword.Font = new System.Drawing.Font("Segoe UI", 5.55F);
-            this.labelInvalidPassword.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelInvalidPassword.Location = new System.Drawing.Point(88, 157);
-            this.labelInvalidPassword.Margin = new System.Windows.Forms.Padding(0);
-            this.labelInvalidPassword.Name = "labelInvalidPassword";
-            this.labelInvalidPassword.Size = new System.Drawing.Size(223, 11);
-            this.labelInvalidPassword.TabIndex = 11;
-            this.labelInvalidPassword.Text = "Must have upper and lower case, a number, and 8 characters";
-            // 
-            // labelPasswordDoesNotMatch
-            // 
-            this.labelPasswordDoesNotMatch.AutoSize = true;
-            this.labelPasswordDoesNotMatch.BackColor = System.Drawing.Color.Transparent;
-            this.labelPasswordDoesNotMatch.Font = new System.Drawing.Font("Segoe UI", 6.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPasswordDoesNotMatch.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelPasswordDoesNotMatch.Location = new System.Drawing.Point(88, 203);
-            this.labelPasswordDoesNotMatch.Margin = new System.Windows.Forms.Padding(0);
-            this.labelPasswordDoesNotMatch.Name = "labelPasswordDoesNotMatch";
-            this.labelPasswordDoesNotMatch.Size = new System.Drawing.Size(101, 12);
-            this.labelPasswordDoesNotMatch.TabIndex = 12;
-            this.labelPasswordDoesNotMatch.Text = "Passwords do not match";
-            // 
             // SignUpPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.labelPasswordDoesNotMatch);
             this.Controls.Add(this.labelInvalidPassword);
             this.Controls.Add(this.labelUsernameTaken);
