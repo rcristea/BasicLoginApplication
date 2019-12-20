@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace BasicLoginApplication {
     public partial class SignInForm : Form {
@@ -106,6 +107,57 @@ namespace BasicLoginApplication {
             signUpPanel.Hide();
             buttonSignup.Hide();
             labelBackButton.Hide();
+        }
+
+        private void buttonSignup_MouseDown(object sender, MouseEventArgs e) {
+            DatabaseManager dm = new DatabaseManager();
+            bool validInput = true;
+            string email = signUpPanel.getEmail();
+            string username = signUpPanel.getUsername();
+            string password = signUpPanel.getPassword();
+
+            try {
+                MailAddress mail = new MailAddress(email);
+            }
+            catch (FormatException) {
+                validInput = false;
+                signUpPanel.showInvalidEmail(true);
+            }
+
+            if (dm.getDocument(username) != null) {
+                validInput = false;
+                signUpPanel.showUsernameTaken(true);
+            }
+
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasMinimum8Chars = new Regex(@".{8,}");
+
+            if (!hasNumber.IsMatch(password) || !hasUpperChar.IsMatch(password) || !hasMinimum8Chars.IsMatch(password)) {
+                signUpPanel.showInvalidPassword(true);
+                validInput = false;
+            }
+
+            if (validInput) {
+                User user = new User(email, username, password);
+                user.encryptPassword();
+                dm.addDocument(user);
+
+                signInPanel.Show();
+                buttonLogin.Show();
+                labelNotAMemeber.Show();
+                labelSignUpButton.Show();
+
+                signUpPanel.showInvalidEmail(false);
+                signUpPanel.showUsernameTaken(false);
+                signUpPanel.showInvalidPassword(false);
+
+                signUpPanel.Hide();
+                buttonSignup.Hide();
+                labelBackButton.Hide();
+            }
+
+            
         }
     }
 }

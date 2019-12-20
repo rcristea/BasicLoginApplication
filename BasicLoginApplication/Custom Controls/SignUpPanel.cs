@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicLoginApplication.Custom_Controls {
@@ -66,6 +59,10 @@ namespace BasicLoginApplication.Custom_Controls {
             }
         }
 
+        private bool passwordsMatch() {
+            return textBoxCuePassword1.Text == textBoxCuePassword2.Text;
+        }
+
         public void showInvalidEmail(bool invalid) {
             if (invalid) labelInvalidEmail.Show();
             else labelInvalidEmail.Hide();
@@ -79,6 +76,18 @@ namespace BasicLoginApplication.Custom_Controls {
         public void showInvalidPassword(bool invalid) {
             if (invalid) labelInvalidPassword.Show();
             else labelInvalidPassword.Hide();
+        }
+
+        public string getEmail() {
+            return textBoxCueEmail.Text;
+        }
+
+        public string getUsername() {
+            return textBoxCueUsername.Text;
+        }
+
+        public string getPassword() {
+            return passwordsMatch() ? textBoxCuePassword1.Text : null;
         }
     }
 }

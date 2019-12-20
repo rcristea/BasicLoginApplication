@@ -124,6 +124,7 @@
             this.textBoxCuePassword2.Location = new System.Drawing.Point(90, 218);
             this.textBoxCuePassword2.Margin = new System.Windows.Forms.Padding(92, 15, 92, 0);
             this.textBoxCuePassword2.Name = "textBoxCuePassword2";
+            this.textBoxCuePassword2.PasswordChar = '●';
             this.textBoxCuePassword2.Size = new System.Drawing.Size(182, 31);
             this.textBoxCuePassword2.TabIndex = 8;
             this.textBoxCuePassword2.TextChanged += new System.EventHandler(this.textBoxCuePassword2_TextChanged);

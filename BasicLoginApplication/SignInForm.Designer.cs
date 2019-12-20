@@ -80,12 +80,13 @@
             this.buttonSignup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSignup.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.buttonSignup.ForeColor = System.Drawing.Color.White;
-            this.buttonSignup.Location = new System.Drawing.Point(140, 391);
+            this.buttonSignup.Location = new System.Drawing.Point(140, 392);
             this.buttonSignup.Name = "buttonSignup";
-            this.buttonSignup.Size = new System.Drawing.Size(188, 38);
+            this.buttonSignup.Size = new System.Drawing.Size(188, 37);
             this.buttonSignup.TabIndex = 7;
             this.buttonSignup.Text = "SIGN UP";
             this.buttonSignup.UseVisualStyleBackColor = false;
+            this.buttonSignup.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonSignup_MouseDown);
             // 
             // signUpPanel
             // 
