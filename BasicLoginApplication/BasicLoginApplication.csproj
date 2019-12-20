@@ -98,6 +98,12 @@
     <Compile Include="Custom Controls\SignInPanel.Designer.cs">
       <DependentUpon>SignInPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Custom Controls\SignUpPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\SignUpPanel.Designer.cs">
+      <DependentUpon>SignUpPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Custom Controls\TextBoxCue.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\SignInPanel.resx">
       <DependentUpon>SignInPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Controls\SignUpPanel.resx">
+      <DependentUpon>SignUpPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

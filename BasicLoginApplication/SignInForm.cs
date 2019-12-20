@@ -18,6 +18,10 @@ namespace BasicLoginApplication {
         public SignInForm() {
             InitializeComponent();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
+            signUpPanel.Hide();
+            buttonSignup.Hide();
+            labelBackButton.Hide();
         }
 
         private void gradient_MouseDown(object sender, MouseEventArgs e) {
@@ -54,6 +58,54 @@ namespace BasicLoginApplication {
             } else {
                 signInPanel.showInvalid(true);
             }
+        }
+
+        private void labelSignUpButton_MouseHover(object sender, EventArgs e) {
+            Font label = labelSignUpButton.Font;
+            labelSignUpButton.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Regular);
+        }
+
+        private void labelSignUpButton_MouseLeave(object sender, EventArgs e) {
+            Font label = labelSignUpButton.Font;
+            labelSignUpButton.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Underline);
+        }
+
+        private void labelSignUpButton_MouseDown(object sender, MouseEventArgs e) {
+            signInPanel.Hide();
+            buttonLogin.Hide();
+            labelNotAMemeber.Hide();
+            labelSignUpButton.Hide();
+
+            signInPanel.showInvalid(false);
+
+            signUpPanel.Show();
+            buttonSignup.Show();
+            labelBackButton.Show();
+        }
+
+        private void labelBackButton_MouseHover(object sender, EventArgs e) {
+            Font label = labelBackButton.Font;
+            labelBackButton.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Regular);
+        }
+
+        private void labelBackButton_MouseLeave(object sender, EventArgs e) {
+            Font label = labelBackButton.Font;
+            labelBackButton.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Underline);
+        }
+
+        private void labelBackButton_MouseDown(object sender, MouseEventArgs e) {
+            signInPanel.Show();
+            buttonLogin.Show();
+            labelNotAMemeber.Show();
+            labelSignUpButton.Show();
+
+            signUpPanel.showInvalidEmail(false);
+            signUpPanel.showUsernameTaken(false);
+            signUpPanel.showInvalidPassword(false);
+
+            signUpPanel.Hide();
+            buttonSignup.Hide();
+            labelBackButton.Hide();
         }
     }
 }
