@@ -17,4 +17,4 @@ Incomplete Features
 
 Bugs
 ---
-- The white background is too high.
+-
