@@ -24,7 +24,7 @@ namespace BasicLoginApplication {
             await Collection.DeleteOneAsync(user.Email);
         }
 
-        private User getDocument(string query) {
+        public User getDocument(string query) {
             FilterDefinition<User> filter = Builders<User>.Filter.Eq("Username", query);
             return Collection.Find(filter).FirstOrDefault();
         }
