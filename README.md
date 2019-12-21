@@ -9,11 +9,13 @@ Completed Features
 - Password encryption
 - Database connection
 - Login verification
+- Sign up page
 
 Incomplete Features
 -------------------
 - Login with Facebook or Google
-- Sign up page
+- Signed in page
+- delete account
 
 Bugs
 ---
