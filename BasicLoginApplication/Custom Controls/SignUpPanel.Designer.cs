@@ -127,7 +127,6 @@
             this.textBoxCuePassword2.PasswordChar = '●';
             this.textBoxCuePassword2.Size = new System.Drawing.Size(182, 31);
             this.textBoxCuePassword2.TabIndex = 8;
-            this.textBoxCuePassword2.TextChanged += new System.EventHandler(this.textBoxCuePassword2_TextChanged);
             this.textBoxCuePassword2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBoxCuePassword2_MouseDown);
             // 
             // textBoxCuePassword1
