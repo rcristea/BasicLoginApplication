@@ -33,6 +33,7 @@
             this.signInPanel = new BasicLoginApplication.Custom_Controls.SignInPanel();
             this.buttonClose = new BasicLoginApplication.Custom_Controls.ButtonClose();
             this.backgroundPanel = new BasicLoginApplication.Custom_Controls.BackgroundPanel();
+            this.successfulSignUpPanel = new BasicLoginApplication.Custom_Controls.SuccessfulSignUpPanel();
             this.gradient.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,6 +41,7 @@
             // 
             this.gradient.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
             this.gradient.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(137)))), ((int)(((byte)(162)))));
+            this.gradient.Controls.Add(this.successfulSignUpPanel);
             this.gradient.Controls.Add(this.labelBackButton);
             this.gradient.Controls.Add(this.buttonSignup);
             this.gradient.Controls.Add(this.signUpPanel);
@@ -166,6 +168,14 @@
             this.backgroundPanel.Size = new System.Drawing.Size(376, 472);
             this.backgroundPanel.TabIndex = 0;
             // 
+            // successfulSignUpPanel
+            // 
+            this.successfulSignUpPanel.BackColor = System.Drawing.Color.White;
+            this.successfulSignUpPanel.Location = new System.Drawing.Point(58, 113);
+            this.successfulSignUpPanel.Name = "successfulSignUpPanel";
+            this.successfulSignUpPanel.Size = new System.Drawing.Size(364, 227);
+            this.successfulSignUpPanel.TabIndex = 9;
+            // 
             // SignInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,6 +203,7 @@
         private System.Windows.Forms.Button buttonSignup;
         private Custom_Controls.SignUpPanel signUpPanel;
         private System.Windows.Forms.Label labelBackButton;
+        private Custom_Controls.SuccessfulSignUpPanel successfulSignUpPanel;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -23,6 +24,7 @@ namespace BasicLoginApplication {
             signUpPanel.Hide();
             buttonSignup.Hide();
             labelBackButton.Hide();
+            successfulSignUpPanel.Hide();
         }
 
         private void gradient_MouseDown(object sender, MouseEventArgs e) {
@@ -119,6 +121,10 @@ namespace BasicLoginApplication {
             try {
                 MailAddress mail = new MailAddress(email);
             }
+            catch (ArgumentException) {
+                validInput = false;
+                signUpPanel.showInvalidEmail(true);
+            }
             catch (FormatException) {
                 validInput = false;
                 signUpPanel.showInvalidEmail(true);
@@ -133,15 +139,23 @@ namespace BasicLoginApplication {
             var hasUpperChar = new Regex(@"[A-Z]+");
             var hasMinimum8Chars = new Regex(@".{8,}");
 
+            if (password == null) password = "";
+
             if (!hasNumber.IsMatch(password) || !hasUpperChar.IsMatch(password) || !hasMinimum8Chars.IsMatch(password)) {
                 signUpPanel.showInvalidPassword(true);
                 validInput = false;
             }
 
+            signUpPanel.showPasswordMatch();
+
             if (validInput) {
                 User user = new User(email, username, password);
                 user.encryptPassword();
                 dm.addDocument(user);
+
+                signUpPanel.Hide();
+                buttonSignup.Hide();
+                labelBackButton.Hide();
 
                 signInPanel.Show();
                 buttonLogin.Show();
@@ -151,13 +165,13 @@ namespace BasicLoginApplication {
                 signUpPanel.showInvalidEmail(false);
                 signUpPanel.showUsernameTaken(false);
                 signUpPanel.showInvalidPassword(false);
-
-                signUpPanel.Hide();
-                buttonSignup.Hide();
-                labelBackButton.Hide();
             }
 
-            
+            //TODO fix passwords dont match
+            //TODO add a successful sign up page
+            //  this will reroute to the signed in page after a few seconds have passed
+            //TODO add a signed in page
+            //  in the signed in page add the option to delete their account and to log out
         }
     }
 }

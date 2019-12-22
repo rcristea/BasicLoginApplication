@@ -50,15 +50,6 @@ namespace BasicLoginApplication.Custom_Controls {
             labelPasswordDoesNotMatch.Hide();
         }
 
-        private void textBoxCuePassword2_TextChanged(object sender, EventArgs e) {
-            if (textBoxCuePassword1 != textBoxCuePassword2) {
-                labelPasswordDoesNotMatch.Show();
-            }
-            else {
-                labelPasswordDoesNotMatch.Hide();
-            }
-        }
-
         private bool passwordsMatch() {
             return textBoxCuePassword1.Text == textBoxCuePassword2.Text;
         }
@@ -76,6 +67,14 @@ namespace BasicLoginApplication.Custom_Controls {
         public void showInvalidPassword(bool invalid) {
             if (invalid) labelInvalidPassword.Show();
             else labelInvalidPassword.Hide();
+        }
+
+        public void showPasswordMatch() {
+            if (textBoxCuePassword1 != textBoxCuePassword2) {
+                labelPasswordDoesNotMatch.Show();
+            } else {
+                labelPasswordDoesNotMatch.Hide();
+            }
         }
 
         public string getEmail() {
