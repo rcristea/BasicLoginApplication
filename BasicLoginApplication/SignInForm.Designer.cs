@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.gradient = new BasicLoginApplication.res.Gradient();
+            this.labelButtonClose = new System.Windows.Forms.Label();
             this.successfulSignUpPanel = new BasicLoginApplication.Custom_Controls.SuccessfulSignUpPanel();
             this.labelBackButton = new System.Windows.Forms.Label();
             this.buttonSignup = new System.Windows.Forms.Button();
@@ -34,7 +35,6 @@
             this.signInPanel = new BasicLoginApplication.Custom_Controls.SignInPanel();
             this.buttonClose = new BasicLoginApplication.Custom_Controls.ButtonClose();
             this.backgroundPanel = new BasicLoginApplication.Custom_Controls.BackgroundPanel();
-            this.labelButtonClose = new System.Windows.Forms.Label();
             this.gradient.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,21 @@
             this.gradient.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseDown);
             this.gradient.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseMove);
             this.gradient.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseUp);
+            // 
+            // labelButtonClose
+            // 
+            this.labelButtonClose.AutoSize = true;
+            this.labelButtonClose.BackColor = System.Drawing.Color.White;
+            this.labelButtonClose.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelButtonClose.ForeColor = System.Drawing.Color.Gray;
+            this.labelButtonClose.Location = new System.Drawing.Point(210, 492);
+            this.labelButtonClose.Name = "labelButtonClose";
+            this.labelButtonClose.Size = new System.Drawing.Size(35, 13);
+            this.labelButtonClose.TabIndex = 10;
+            this.labelButtonClose.Text = "Close";
+            this.labelButtonClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelButtonClose_MouseDown);
+            this.labelButtonClose.MouseLeave += new System.EventHandler(this.labelButtonClose_MouseLeave);
+            this.labelButtonClose.MouseHover += new System.EventHandler(this.labelButtonClose_MouseHover);
             // 
             // successfulSignUpPanel
             // 
@@ -177,19 +192,6 @@
             this.backgroundPanel.Name = "backgroundPanel";
             this.backgroundPanel.Size = new System.Drawing.Size(376, 472);
             this.backgroundPanel.TabIndex = 0;
-            // 
-            // labelButtonClose
-            // 
-            this.labelButtonClose.AutoSize = true;
-            this.labelButtonClose.BackColor = System.Drawing.Color.White;
-            this.labelButtonClose.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelButtonClose.ForeColor = System.Drawing.Color.Gray;
-            this.labelButtonClose.Location = new System.Drawing.Point(210, 492);
-            this.labelButtonClose.Name = "labelButtonClose";
-            this.labelButtonClose.Size = new System.Drawing.Size(35, 13);
-            this.labelButtonClose.TabIndex = 10;
-            this.labelButtonClose.Text = "Close";
-            this.labelButtonClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelButtonClose_MouseDown);
             // 
             // SignInForm
             // 

@@ -178,5 +178,15 @@ namespace BasicLoginApplication {
             labelNotAMemeber.Show();
             labelSignUpButton.Show();
         }
+
+        private void labelButtonClose_MouseHover(object sender, EventArgs e) {
+            Font label = labelButtonClose.Font;
+            labelButtonClose.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Regular);
+        }
+
+        private void labelButtonClose_MouseLeave(object sender, EventArgs e) {
+            Font label = labelButtonClose.Font;
+            labelButtonClose.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Underline);
+        }
     }
 }
