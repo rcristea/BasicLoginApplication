@@ -25,6 +25,7 @@ namespace BasicLoginApplication {
             buttonSignup.Hide();
             labelBackButton.Hide();
             successfulSignUpPanel.Hide();
+            labelButtonClose.Hide();
         }
 
         private void gradient_MouseDown(object sender, MouseEventArgs e) {
@@ -157,21 +158,25 @@ namespace BasicLoginApplication {
                 buttonSignup.Hide();
                 labelBackButton.Hide();
 
-                signInPanel.Show();
-                buttonLogin.Show();
-                labelNotAMemeber.Show();
-                labelSignUpButton.Show();
-
-                signUpPanel.showInvalidEmail(false);
-                signUpPanel.showUsernameTaken(false);
-                signUpPanel.showInvalidPassword(false);
+                successfulSignUpPanel.Show();
+                labelButtonClose.Show();
             }
 
-            //TODO fix passwords dont match
-            //TODO add a successful sign up page
-            //  this will reroute to the signed in page after a few seconds have passed
-            //TODO add a signed in page
-            //  in the signed in page add the option to delete their account and to log out
+        }
+
+        private void labelButtonClose_MouseDown(object sender, MouseEventArgs e) {
+            successfulSignUpPanel.Hide();
+            labelButtonClose.Hide();
+
+            signUpPanel.showInvalidEmail(false);
+            signUpPanel.showUsernameTaken(false);
+            signUpPanel.showInvalidPassword(false);
+
+            signInPanel.Show();
+            buttonLogin.Show();
+            labelNotAMemeber.Show();
+            labelNotAMemeber.Show();
+            labelSignUpButton.Show();
         }
     }
 }

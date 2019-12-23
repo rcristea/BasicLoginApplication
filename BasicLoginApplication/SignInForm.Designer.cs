@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.gradient = new BasicLoginApplication.res.Gradient();
+            this.successfulSignUpPanel = new BasicLoginApplication.Custom_Controls.SuccessfulSignUpPanel();
             this.labelBackButton = new System.Windows.Forms.Label();
             this.buttonSignup = new System.Windows.Forms.Button();
             this.signUpPanel = new BasicLoginApplication.Custom_Controls.SignUpPanel();
@@ -33,7 +34,7 @@
             this.signInPanel = new BasicLoginApplication.Custom_Controls.SignInPanel();
             this.buttonClose = new BasicLoginApplication.Custom_Controls.ButtonClose();
             this.backgroundPanel = new BasicLoginApplication.Custom_Controls.BackgroundPanel();
-            this.successfulSignUpPanel = new BasicLoginApplication.Custom_Controls.SuccessfulSignUpPanel();
+            this.labelButtonClose = new System.Windows.Forms.Label();
             this.gradient.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,6 +42,7 @@
             // 
             this.gradient.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
             this.gradient.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(137)))), ((int)(((byte)(162)))));
+            this.gradient.Controls.Add(this.labelButtonClose);
             this.gradient.Controls.Add(this.successfulSignUpPanel);
             this.gradient.Controls.Add(this.labelBackButton);
             this.gradient.Controls.Add(this.buttonSignup);
@@ -59,6 +61,14 @@
             this.gradient.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseDown);
             this.gradient.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseMove);
             this.gradient.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseUp);
+            // 
+            // successfulSignUpPanel
+            // 
+            this.successfulSignUpPanel.BackColor = System.Drawing.Color.White;
+            this.successfulSignUpPanel.Location = new System.Drawing.Point(58, 113);
+            this.successfulSignUpPanel.Name = "successfulSignUpPanel";
+            this.successfulSignUpPanel.Size = new System.Drawing.Size(364, 227);
+            this.successfulSignUpPanel.TabIndex = 9;
             // 
             // labelBackButton
             // 
@@ -168,13 +178,18 @@
             this.backgroundPanel.Size = new System.Drawing.Size(376, 472);
             this.backgroundPanel.TabIndex = 0;
             // 
-            // successfulSignUpPanel
+            // labelButtonClose
             // 
-            this.successfulSignUpPanel.BackColor = System.Drawing.Color.White;
-            this.successfulSignUpPanel.Location = new System.Drawing.Point(58, 113);
-            this.successfulSignUpPanel.Name = "successfulSignUpPanel";
-            this.successfulSignUpPanel.Size = new System.Drawing.Size(364, 227);
-            this.successfulSignUpPanel.TabIndex = 9;
+            this.labelButtonClose.AutoSize = true;
+            this.labelButtonClose.BackColor = System.Drawing.Color.White;
+            this.labelButtonClose.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelButtonClose.ForeColor = System.Drawing.Color.Gray;
+            this.labelButtonClose.Location = new System.Drawing.Point(210, 492);
+            this.labelButtonClose.Name = "labelButtonClose";
+            this.labelButtonClose.Size = new System.Drawing.Size(35, 13);
+            this.labelButtonClose.TabIndex = 10;
+            this.labelButtonClose.Text = "Close";
+            this.labelButtonClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelButtonClose_MouseDown);
             // 
             // SignInForm
             // 
@@ -204,6 +219,7 @@
         private Custom_Controls.SignUpPanel signUpPanel;
         private System.Windows.Forms.Label labelBackButton;
         private Custom_Controls.SuccessfulSignUpPanel successfulSignUpPanel;
+        private System.Windows.Forms.Label labelButtonClose;
     }
 }
 
