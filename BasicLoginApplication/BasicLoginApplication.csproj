@@ -92,6 +92,12 @@
     <Compile Include="Custom Controls\ButtonClose.Designer.cs">
       <DependentUpon>ButtonClose.cs</DependentUpon>
     </Compile>
+    <Compile Include="Custom Controls\SignedInPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\SignedInPanel.Designer.cs">
+      <DependentUpon>SignedInPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Custom Controls\SignInPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\ButtonClose.resx">
       <DependentUpon>ButtonClose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Controls\SignedInPanel.resx">
+      <DependentUpon>SignedInPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Custom Controls\SignInPanel.resx">
       <DependentUpon>SignInPanel.cs</DependentUpon>
