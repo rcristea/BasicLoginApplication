@@ -24,6 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.gradient = new BasicLoginApplication.res.Gradient();
+            this.buttonSignOut = new System.Windows.Forms.Button();
+            this.signedInPanel = new BasicLoginApplication.Custom_Controls.SignedInPanel();
             this.labelButtonClose = new System.Windows.Forms.Label();
             this.successfulSignUpPanel = new BasicLoginApplication.Custom_Controls.SuccessfulSignUpPanel();
             this.labelBackButton = new System.Windows.Forms.Label();
@@ -35,6 +37,7 @@
             this.signInPanel = new BasicLoginApplication.Custom_Controls.SignInPanel();
             this.buttonClose = new BasicLoginApplication.Custom_Controls.ButtonClose();
             this.backgroundPanel = new BasicLoginApplication.Custom_Controls.BackgroundPanel();
+            this.buttonDeleteAccount = new System.Windows.Forms.Button();
             this.gradient.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,6 +45,9 @@
             // 
             this.gradient.ColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
             this.gradient.ColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(137)))), ((int)(((byte)(162)))));
+            this.gradient.Controls.Add(this.buttonDeleteAccount);
+            this.gradient.Controls.Add(this.buttonSignOut);
+            this.gradient.Controls.Add(this.signedInPanel);
             this.gradient.Controls.Add(this.labelButtonClose);
             this.gradient.Controls.Add(this.successfulSignUpPanel);
             this.gradient.Controls.Add(this.labelBackButton);
@@ -61,6 +67,28 @@
             this.gradient.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseDown);
             this.gradient.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseMove);
             this.gradient.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gradient_MouseUp);
+            // 
+            // buttonSignOut
+            // 
+            this.buttonSignOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
+            this.buttonSignOut.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSignOut.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.buttonSignOut.ForeColor = System.Drawing.Color.White;
+            this.buttonSignOut.Location = new System.Drawing.Point(140, 217);
+            this.buttonSignOut.Name = "buttonSignOut";
+            this.buttonSignOut.Size = new System.Drawing.Size(188, 37);
+            this.buttonSignOut.TabIndex = 12;
+            this.buttonSignOut.Text = "SIGN OUT";
+            this.buttonSignOut.UseVisualStyleBackColor = false;
+            // 
+            // signedInPanel
+            // 
+            this.signedInPanel.BackColor = System.Drawing.Color.White;
+            this.signedInPanel.Location = new System.Drawing.Point(59, 124);
+            this.signedInPanel.Name = "signedInPanel";
+            this.signedInPanel.Size = new System.Drawing.Size(364, 67);
+            this.signedInPanel.TabIndex = 11;
             // 
             // labelButtonClose
             // 
@@ -193,6 +221,20 @@
             this.backgroundPanel.Size = new System.Drawing.Size(376, 472);
             this.backgroundPanel.TabIndex = 0;
             // 
+            // buttonDeleteAccount
+            // 
+            this.buttonDeleteAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(37)))), ((int)(((byte)(141)))));
+            this.buttonDeleteAccount.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonDeleteAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteAccount.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.buttonDeleteAccount.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteAccount.Location = new System.Drawing.Point(141, 277);
+            this.buttonDeleteAccount.Name = "buttonDeleteAccount";
+            this.buttonDeleteAccount.Size = new System.Drawing.Size(188, 37);
+            this.buttonDeleteAccount.TabIndex = 13;
+            this.buttonDeleteAccount.Text = "DELETE ACCOUNT";
+            this.buttonDeleteAccount.UseVisualStyleBackColor = false;
+            // 
             // SignInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +264,9 @@
         private System.Windows.Forms.Label labelBackButton;
         private Custom_Controls.SuccessfulSignUpPanel successfulSignUpPanel;
         private System.Windows.Forms.Label labelButtonClose;
+        private Custom_Controls.SignedInPanel signedInPanel;
+        private System.Windows.Forms.Button buttonSignOut;
+        private System.Windows.Forms.Button buttonDeleteAccount;
     }
 }
 

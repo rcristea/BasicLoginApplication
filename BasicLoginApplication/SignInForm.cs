@@ -26,6 +26,9 @@ namespace BasicLoginApplication {
             labelBackButton.Hide();
             successfulSignUpPanel.Hide();
             labelButtonClose.Hide();
+            signedInPanel.Hide();
+            buttonDeleteAccount.Hide();
+            buttonSignOut.Hide();
         }
 
         private void gradient_MouseDown(object sender, MouseEventArgs e) {
@@ -58,7 +61,15 @@ namespace BasicLoginApplication {
             string password = signInPanel.getPassword();
 
             if (dm.isValidUser(username, password)) {
-                MessageBox.Show("Signed In!");
+                signInPanel.Hide();
+                labelNotAMemeber.Hide();
+                labelSignUpButton.Hide();
+                buttonLogin.Hide();
+
+                signedInPanel.setWelcomeText(username);
+                signedInPanel.Show();
+                buttonSignOut.Show();
+                buttonDeleteAccount.Show();
             } else {
                 signInPanel.showInvalid(true);
             }
