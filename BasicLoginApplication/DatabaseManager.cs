@@ -20,8 +20,8 @@ namespace BasicLoginApplication {
             await Collection.InsertOneAsync(user);
         }
 
-        public async void removeDocument(User user) {
-            await Collection.DeleteOneAsync(user.Email);
+        public async void removeDocument(string username) {
+            await Collection.DeleteOneAsync(u => u.Username == username);
         }
 
         public User getDocument(string query) {
