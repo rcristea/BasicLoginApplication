@@ -214,6 +214,17 @@ namespace BasicLoginApplication {
         private void buttonDeleteAccount_MouseDown(object sender, MouseEventArgs e) {
             DatabaseManager dm = new DatabaseManager();
             dm.removeDocument(signInPanel.getUsername());
+
+            signedInPanel.Hide();
+            buttonSignOut.Hide();
+            buttonDeleteAccount.Hide();
+
+            signInPanel.Show();
+            buttonLogin.Show();
+            labelNotAMemeber.Show();
+            labelSignUpButton.Show();
+
+            MessageBox.Show("Account Deleted!");
         }
     }
 }
