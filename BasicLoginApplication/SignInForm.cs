@@ -199,5 +199,32 @@ namespace BasicLoginApplication {
             Font label = labelButtonClose.Font;
             labelButtonClose.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Underline);
         }
+
+        private void buttonSignOut_MouseDown(object sender, MouseEventArgs e) {
+            signedInPanel.Hide();
+            buttonSignOut.Hide();
+            buttonDeleteAccount.Hide();
+
+            signInPanel.Show();
+            buttonLogin.Show();
+            labelNotAMemeber.Show();
+            labelSignUpButton.Show();
+        }
+
+        private void buttonDeleteAccount_MouseDown(object sender, MouseEventArgs e) {
+            DatabaseManager dm = new DatabaseManager();
+            dm.removeDocument(signInPanel.getUsername());
+
+            signedInPanel.Hide();
+            buttonSignOut.Hide();
+            buttonDeleteAccount.Hide();
+
+            signInPanel.Show();
+            buttonLogin.Show();
+            labelNotAMemeber.Show();
+            labelSignUpButton.Show();
+
+            MessageBox.Show("Account Deleted!");
+        }
     }
 }
