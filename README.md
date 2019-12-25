@@ -10,12 +10,12 @@ Completed Features
 - Database connection
 - Login verification
 - Sign up page
+- Signed in page
+- delete account
 
 Incomplete Features
 -------------------
 - Login with Facebook or Google
-- Signed in page
-- delete account
 
 Bugs
 ---
