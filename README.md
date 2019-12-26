@@ -12,6 +12,7 @@ Completed Features
 - Sign up page
 - Signed in page
 - delete account
+- remember me
 
 Incomplete Features
 -------------------
