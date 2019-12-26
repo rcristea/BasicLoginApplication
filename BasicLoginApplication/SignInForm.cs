@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Net.Mail;
+using System.IO;
 
 namespace BasicLoginApplication {
     /// <summary>
@@ -25,6 +26,7 @@ namespace BasicLoginApplication {
         /// <remarks>
         ///     The region creates the curved borders around the edge.
         ///     All controls not pertaining to the main sign in page are hidden.
+        ///     Will fill out the text boxes with the information from the rememberme text file.
         /// </remarks>
         public SignInForm() {
             InitializeComponent();
@@ -38,6 +40,13 @@ namespace BasicLoginApplication {
             signedInPanel.Hide();
             buttonDeleteAccount.Hide();
             buttonSignOut.Hide();
+
+            string[] lines = File.ReadAllLines(@"..\..\res\rememberme.txt");
+            if (lines.Length > 0) {
+                lines[1] = Cipher.Decrypt(lines[1], "AH!PS^B0%FGH$we4");
+                signInPanel.setUsername(lines[0]);
+                signInPanel.setPassword(lines[1]);
+            }
         }
 
         /// <summary>
@@ -82,10 +91,6 @@ namespace BasicLoginApplication {
         /// <param name="sender">The black X button.</param>
         /// <param name="e">The mouse down event.</param>
         private void buttonClose1_MouseDown(object sender, MouseEventArgs e) {
-            if (signInPanel.rememberMe()) {
-                //TODO if they checked remember me i need to create a text file with the username and password (encrypted) in a text file
-            }
-
             Application.Exit();
         }
 
@@ -97,6 +102,23 @@ namespace BasicLoginApplication {
         private void buttonLogin_Click(object sender, EventArgs e) {
             string username = signInPanel.getUsername();
             string password = signInPanel.getPassword();
+
+            if (signInPanel.rememberMe()) {
+                string path = @"..\..\res\rememberme.txt";
+                string encrypted = Cipher.Encrypt(password, "AH!PS^B0%FGH$we4");
+                string toFile = username + "\n" + encrypted;
+
+                try {
+                    File.WriteAllText(path, toFile);
+                }
+                catch (DirectoryNotFoundException) {
+                    Console.WriteLine("Username and Password not saved");
+                }
+            }
+            else {
+                string path = @"..\..\res\rememberme.txt";
+                File.WriteAllText(path, String.Empty);
+            }
 
             if (dm.isValidUser(username, password)) {
                 signInPanel.Hide();
