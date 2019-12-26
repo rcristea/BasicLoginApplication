@@ -33,8 +33,8 @@ namespace BasicLoginApplication {
             username = username.ToLower();
             User user = getDocument(username) == null ? new User("", "", "") : getDocument(username);
 
-            string encryptedPassword = User.encryptPassword(password);
-            if (user.Password == encryptedPassword) {
+            string decrypted = Cipher.Decrypt(user.Password, "AH!PS^B0%FGH$we4");
+            if (password == decrypted) {
                 return true;
             }
 

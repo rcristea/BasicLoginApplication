@@ -19,6 +19,14 @@ namespace BasicLoginApplication.Custom_Controls {
             return checkBoxRememberMe.Checked;
         }
 
+        public void setUsername(string username) {
+            textBoxCueUsername.Text = username;
+        }
+
+        public void setPassword(string password) {
+            textBoxCuePassword.Text = password;
+        }
+
         public void showInvalid(bool isInvalid) {
             if (isInvalid) {
                 labelInvalid.Show();

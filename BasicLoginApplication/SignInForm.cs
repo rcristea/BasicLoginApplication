@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Threading;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Net.Mail;
+using System.IO;
 
 namespace BasicLoginApplication {
+    /// <summary>
+    ///     The main GUI frame for the entire application.
+    /// </summary>
     public partial class SignInForm : Form {
         private DatabaseManager dm = new DatabaseManager();
         private bool dragging = false;
@@ -16,7 +19,15 @@ namespace BasicLoginApplication {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
         private static extern IntPtr CreateRoundRectRgn(int Left, int Top, int Right, int Bottom, int Height, int Width);
-
+        
+        /// <summary>
+        ///     Initializes all controls for the application.
+        /// </summary>
+        /// <remarks>
+        ///     The region creates the curved borders around the edge.
+        ///     All controls not pertaining to the main sign in page are hidden.
+        ///     Will fill out the text boxes with the information from the rememberme text file.
+        /// </remarks>
         public SignInForm() {
             InitializeComponent();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
@@ -29,14 +40,31 @@ namespace BasicLoginApplication {
             signedInPanel.Hide();
             buttonDeleteAccount.Hide();
             buttonSignOut.Hide();
+
+            string[] lines = File.ReadAllLines(@"..\..\res\rememberme.txt");
+            if (lines.Length > 0) {
+                lines[1] = Cipher.Decrypt(lines[1], "AH!PS^B0%FGH$we4");
+                signInPanel.setUsername(lines[0]);
+                signInPanel.setPassword(lines[1]);
+            }
         }
 
+        /// <summary>
+        ///     Starts the dragging sequnce to move the window when clicking on the background.
+        /// </summary>
+        /// <param name="sender">The gradient</param>
+        /// <param name="e">The mouse down event</param>
         private void gradient_MouseDown(object sender, MouseEventArgs e) {
             this.dragging = true;
             this.point = Cursor.Position;
             this.dragStart = this.Location;
         }
 
+        /// <summary>
+        ///     Moves the window while the mouse is dragging the background.
+        /// </summary>
+        /// <param name="sender">The gradient.</param>
+        /// <param name="e">The mouse move event.</param>
         private void gradient_MouseMove(object sender, MouseEventArgs e) {
             if (dragging) {
                 Point dif = Point.Subtract(Cursor.Position, new Size(this.point));
@@ -44,21 +72,53 @@ namespace BasicLoginApplication {
             }
         }
 
+        /// <summary>
+        ///     Stops the dragging sequnce after the mouse is released.
+        /// </summary>
+        /// <param name="sender">The gradient.</param>
+        /// <param name="e">The mouse up event.</param>
         private void gradient_MouseUp(object sender, MouseEventArgs e) {
             this.dragging = false;
         }
 
+        /// <summary>
+        ///     Closes the application when the black X is clicked.
+        /// </summary>
+        /// <remarks>
+        ///     Will also write the username and encrytped password to a text file. This is used when the application is opened to
+        ///     retain the user's username and password.
+        /// </remarks>
+        /// <param name="sender">The black X button.</param>
+        /// <param name="e">The mouse down event.</param>
         private void buttonClose1_MouseDown(object sender, MouseEventArgs e) {
-            if (signInPanel.rememberMe()) {
-                //TODO if they checked remember me i need to create a text file with the username and password (encrypted) in a text file
-            }
-
             Application.Exit();
         }
 
+        /// <summary>
+        ///     Signs the user int, provided valid input. Otherwise it will display the appropriate error labels.
+        /// </summary>
+        /// <param name="sender">The login button.</param>
+        /// <param name="e">The click event</param>
         private void buttonLogin_Click(object sender, EventArgs e) {
             string username = signInPanel.getUsername();
             string password = signInPanel.getPassword();
+
+            if (signInPanel.rememberMe()) {
+                string path = @"..\..\res\rememberme.txt";
+                string encrypted = Cipher.Encrypt(password, "AH!PS^B0%FGH$we4");
+                string toFile = username + "\n" + encrypted;
+
+                try {
+                    File.WriteAllText(path, toFile);
+                }
+                catch (DirectoryNotFoundException) {
+                    Console.WriteLine("Username and Password not saved");
+                }
+            }
+            else {
+                string path = @"..\..\res\rememberme.txt";
+                File.WriteAllText(path, String.Empty);
+            }
 
             if (dm.isValidUser(username, password)) {
                 signInPanel.Hide();
@@ -75,16 +135,31 @@ namespace BasicLoginApplication {
             }
         }
 
+        /// <summary>
+        ///     Changes the font type of the sign up button to regular.
+        /// </summary>
+        /// <param name="sender">The labelSignUpButton.</param>
+        /// <param name="e">The mouse hover event.</param>
         private void labelSignUpButton_MouseHover(object sender, EventArgs e) {
             Font label = labelSignUpButton.Font;
             labelSignUpButton.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Regular);
         }
 
+        /// <summary>
+        ///     Changes the font type of the sign up button to underlined.
+        /// </summary>
+        /// <param name="sender">The labelSignUpButton.</param>
+        /// <param name="e">The mouseLeave event.</param>
         private void labelSignUpButton_MouseLeave(object sender, EventArgs e) {
             Font label = labelSignUpButton.Font;
             labelSignUpButton.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Underline);
         }
 
+        /// <summary>
+        ///     Displays the signup page when clicked.
+        /// </summary>
+        /// <param name="sender">The labelSignUpButton.</param>
+        /// <param name="e">The mouse down event.</param>
         private void labelSignUpButton_MouseDown(object sender, MouseEventArgs e) {
             signInPanel.Hide();
             buttonLogin.Hide();
@@ -98,16 +173,31 @@ namespace BasicLoginApplication {
             labelBackButton.Show();
         }
 
+        /// <summary>
+        ///     Changes the font style of the back button to regular.
+        /// </summary>
+        /// <param name="sender">The labelBackButton.</param>
+        /// <param name="e">The mouse hover event.</param>
         private void labelBackButton_MouseHover(object sender, EventArgs e) {
             Font label = labelBackButton.Font;
             labelBackButton.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Regular);
         }
 
+        /// <summary>
+        ///     Changes the font style of the back button to underlined.
+        /// </summary>
+        /// <param name="sender">The labelBackButton.</param>
+        /// <param name="e">The mouse leave event.</param>
         private void labelBackButton_MouseLeave(object sender, EventArgs e) {
             Font label = labelBackButton.Font;
             labelBackButton.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Underline);
         }
 
+        /// <summary>
+        ///     Returns the user to the signin page when the back button is clicked.
+        /// </summary>
+        /// <param name="sender">The back button.</param>
+        /// <param name="e">The mouse down event.</param>
         private void labelBackButton_MouseDown(object sender, MouseEventArgs e) {
             signInPanel.Show();
             buttonLogin.Show();
@@ -123,6 +213,15 @@ namespace BasicLoginApplication {
             labelBackButton.Hide();
         }
 
+        /// <summary>
+        ///     Signs the user up and stores their information into the database.
+        /// </summary>
+        /// <remarks>
+        ///     The input is also validated here. If something is wrong the user will not be added and the proper error labels
+        ///     are displayed.
+        /// </remarks>
+        /// <param name="sender">The buttonSignUp.</param>
+        /// <param name="e">The mouse down event.</param>
         private void buttonSignup_MouseDown(object sender, MouseEventArgs e) {
             DatabaseManager dm = new DatabaseManager();
             bool validInput = true;
@@ -174,7 +273,12 @@ namespace BasicLoginApplication {
             }
 
         }
-
+        
+        /// <summary>
+        ///     Returns the user to the sign in page after they successfully signed up.
+        /// </summary>
+        /// <param name="sender">The labelButtonClose.</param>
+        /// <param name="e">The mouse down event.</param>
         private void labelButtonClose_MouseDown(object sender, MouseEventArgs e) {
             successfulSignUpPanel.Hide();
             labelButtonClose.Hide();
@@ -190,16 +294,31 @@ namespace BasicLoginApplication {
             labelSignUpButton.Show();
         }
 
+        /// <summary>
+        ///     Changes the font of the close button to regular when hovering over it.
+        /// </summary>
+        /// <param name="sender">The labelButtonClose.</param>
+        /// <param name="e">The mouse hover event.</param>
         private void labelButtonClose_MouseHover(object sender, EventArgs e) {
             Font label = labelButtonClose.Font;
             labelButtonClose.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Regular);
         }
 
+        /// <summary>
+        ///     Changes the font of the close button to underlined.
+        /// </summary>
+        /// <param name="sender">The labelButtonClose.</param>
+        /// <param name="e">The mouse leave event.</param>
         private void labelButtonClose_MouseLeave(object sender, EventArgs e) {
             Font label = labelButtonClose.Font;
             labelButtonClose.Font = new Font(label.Name, label.SizeInPoints, FontStyle.Underline);
         }
 
+        /// <summary>
+        ///     Returns the user to the signin page.
+        /// </summary>
+        /// <param name="sender">The buttonSignOut.</param>
+        /// <param name="e">The mouse down event.</param>
         private void buttonSignOut_MouseDown(object sender, MouseEventArgs e) {
             signedInPanel.Hide();
             buttonSignOut.Hide();
@@ -211,6 +330,14 @@ namespace BasicLoginApplication {
             labelSignUpButton.Show();
         }
 
+        /// <summary>
+        ///     Deletes the user from the database.
+        /// </summary>
+        /// <remarks>
+        ///     When the user deletes the account their confirmation is shown with a message box.
+        /// </remarks>
+        /// <param name="sender">The buttonDeleteAccount.</param>
+        /// <param name="e">The mouse down event.</param>
         private void buttonDeleteAccount_MouseDown(object sender, MouseEventArgs e) {
             DatabaseManager dm = new DatabaseManager();
             dm.removeDocument(signInPanel.getUsername());
