@@ -9,13 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicLoginApplication.Custom_Controls {
+    /// <summary>
+    ///     The close button (black X in top right) which is used to close out the application at any time.
+    /// </summary>
     public partial class ButtonClose : UserControl {
+        /// <summary>
+        ///     Creates the black X.
+        /// </summary>
         public ButtonClose() {
             InitializeComponent();
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.BackColor = Color.White;
         }
 
+        /// <summary>
+        ///     Used to paint the diagonal lines of the X.
+        /// </summary>
+        /// <param name="sender">The ButtonClose control.</param>
+        /// <param name="e">The paint event.</param>
         private void ButtonClose_Paint(object sender, PaintEventArgs e) {
             Pen pen = new Pen(Color.Black, 2);
 
