@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace BasicLoginApplication.Custom_Controls {
+    /// <summary>
+    ///     Displays when the user entered valid information in the signup page.
+    /// </summary>
     public partial class SuccessfulSignUpPanel : UserControl {
         public SuccessfulSignUpPanel() {
             InitializeComponent();
